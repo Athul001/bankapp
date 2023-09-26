@@ -1,0 +1,20 @@
+Data Sharing
+-------
+
+html   ts
+view   component
+
+
+Data Binding
+---------
+
+1.  One Way Binding
+        
+        1.1 Component to View 
+            1.1.1 String Interpollation {{}}
+            1.1.2 Property Binding      [property]="value"
+
+        1.2 View to Component
+            1.1.1 Event Binding         (event name)="methodname()"
+            1.1.2 $Event Binding        (event name)="methodname($event)" 
+            1.2.3 Event Binding using template reference variable   #variable_name
