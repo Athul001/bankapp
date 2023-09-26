@@ -10,7 +10,12 @@ export class LoginComponent implements OnInit {
   acno: any
   psw: any
 
+  //      DATA BINDING (DATA SHARING)
+
+  //( component to view )  1. string interpollation
   aim = 'Federal Bank - Your Perfect Banking Partner'
+
+  // ( component to view ) 2. property binding
   data = 'Enter Acno'
   data1 = 'Enter Password'
 
@@ -28,12 +33,48 @@ export class LoginComponent implements OnInit {
 
   }
 
-  login() {
-    var acno = this.acno
-    var psw = this.psw
-    var userDetails = this.userDetails
+  // login() {
+  //   var acno = this.acno
+  //   var psw = this.psw
+  //   var userDetails = this.userDetails
 
-          // event binding (view to component)
+  //         // 1.event binding (view to component)
+
+  //   if (acno in userDetails) {
+
+  //     if (psw == userDetails[acno]['password']) {
+  //       alert('login success')
+  //     }
+  //     else {
+  //       alert('incorrect password')
+  //     }
+
+  //   }
+  //   else {
+  //     alert('user not exist')
+  //   }
+  // }
+
+
+  // acnoChange(event: any) {
+  //   this.acno = event.target.value
+  //   // console.log(event.target.value)-----to get the data variable-----2. $event binding(view to component)
+  // }
+
+  // pswChange(event: any) {
+  //   this.psw = event.target.value
+  //   // console.log(this.psw)-----2. $event binding
+  // }
+
+  // 3. Event binding using template reference variable ( view to component )
+
+  login(a: any, b: any) {
+    var acno = a.value
+    var psw = b.value
+
+    console.log(acno);
+
+    var userDetails = this.userDetails
 
     if (acno in userDetails) {
 
@@ -52,13 +93,4 @@ export class LoginComponent implements OnInit {
 
 
 
-  acnoChange(event: any) {
-    this.acno = event.target.value
-    // console.log(event.target.value)-----to get the data variable-----$event binding(view to component)
-  }
-
-  pswChange(event: any) {
-    this.psw = event.target.value
-    // console.log(this.psw)-----$event binding
-  }
 }
