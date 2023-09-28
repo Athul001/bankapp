@@ -1,0 +1,21 @@
+<form>
+    <div class="container w-50 border mt-5 p-3" style="background: rgb(57,87,79,0.5); border-radius: 25px;">
+    <h1 class="text-center text-white">NEW USER</h1>
+    <div class="mt-2 p-2">
+        <input [(ngModel)]="uname" name="uname"  placeholder="username" type="text" class="form-control" id="uid">
+    </div>
+    <div class="mt-2 p-2">
+        <input [(ngModel)]="acno" name="acno"  placeholder="ac number" type="text" class="form-control" id="acid">
+    </div>
+    <div class="mt-2 p-2">
+        <input [(ngModel)]="psw"  name="psw" type="password" placeholder="Password" class="form-control" id="pid">
+    </div>
+    
+    <div class="text-center mt-2 p-2">
+        <button type="submit" (click)="register()" class="btn btn-outline-info">Register</button><br><br>
+        
+    </div>
+    
+    
+    </div>
+</form>

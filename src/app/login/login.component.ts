@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   // ( component to view ) 2. property binding
   data = 'Enter Acno'
-  data1 = 'Enter Password'
+  
 
   userDetails: any = {
     1000: { acno: 1000, username: "amal", password: 123, balance: 0 },
@@ -27,70 +28,35 @@ export class LoginComponent implements OnInit {
 
   }
 
-  constructor() { }
+  constructor(private router:Router) { }
+
+              // (private router:Router) -----> Dependency Injection 
+                                              //private/public --> access specifier
 
   ngOnInit(): void {
-
   }
 
-  // login() {
-  //   var acno = this.acno
-  //   var psw = this.psw
-  //   var userDetails = this.userDetails
-
-  //         // 1.event binding (view to component)
-
-  //   if (acno in userDetails) {
-
-  //     if (psw == userDetails[acno]['password']) {
-  //       alert('login success')
-  //     }
-  //     else {
-  //       alert('incorrect password')
-  //     }
-
-  //   }
-  //   else {
-  //     alert('user not exist')
-  //   }
-  // }
-
-
-  // acnoChange(event: any) {
-  //   this.acno = event.target.value
-  //   // console.log(event.target.value)-----to get the data variable-----2. $event binding(view to component)
-  // }
-
-  // pswChange(event: any) {
-  //   this.psw = event.target.value
-  //   // console.log(this.psw)-----2. $event binding
-  // }
-
-  // 3. Event binding using template reference variable ( view to component )
-
-  login(a: any, b: any) {
-    var acno = a.value
-    var psw = b.value
-
-    console.log(acno);
-
+  login(){
+    var acno = this.acno
+    var psw = this.psw
+  
     var userDetails = this.userDetails
-
+  
     if (acno in userDetails) {
-
-      if (psw == userDetails[acno]['password']) {
+      if (psw==userDetails[acno]['password']) {
         alert('login success')
+        // redirection
+        this.router.navigateByUrl('dashboard')
+        // navigateByUrl method
       }
       else {
         alert('incorrect password')
       }
-
     }
     else {
       alert('user not exist')
     }
   }
 
-
-
+  
 }

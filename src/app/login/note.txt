@@ -6,7 +6,7 @@ view   component
 
 
 Data Binding
----------
+-----------------
 
 1.  One Way Binding
         
@@ -18,3 +18,12 @@ Data Binding
             1.1.1 Event Binding         (event name)="methodname()"
             1.1.2 $Event Binding        (event name)="methodname($event)" 
             1.2.3 Event Binding using template reference variable   #variable_name
+
+2. Two way bimding
+
+        2.1 NgModel    Formsmodule ( a module in NgModel)     [(NgModel)]="value"
+
+Routing in angular
+--------------------
+        navigateByUrl             
+                      is a method of class router 
