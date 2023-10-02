@@ -25,9 +25,30 @@ export class DataService {
     else {
 
       userDetails[acno] = { acno, username, password, balance: 0 }
+      // console.log(userDetails);
+      
       return true
 
     }
 
+  }
+  login(acno:any,psw:any){
+  
+    var userDetails = this.userDetails
+  
+    if (acno in userDetails) {
+      if (psw==userDetails[acno]['password']) {
+       return true
+        
+      }
+      else {
+        alert('incorrect password')
+        return false
+      }
+    }
+    else {
+      alert('user not exist')
+      return false
+    }
   }
 }

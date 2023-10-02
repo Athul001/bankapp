@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -20,15 +21,9 @@ export class LoginComponent implements OnInit {
   data = 'Enter Acno'
   
 
-  userDetails: any = {
-    1000: { acno: 1000, username: "amal", password: 123, balance: 0 },
-    1001: { acno: 1001, username: "anu", password: 123, balance: 0 },
-    1002: { acno: 1002, username: "arun", password: 123, balance: 0 },
-    1003: { acno: 1003, username: "mega", password: 123, balance: 0 }
+  
 
-  }
-
-  constructor(private router:Router) { }
+  constructor(private router:Router,private ds:DataService) { }
 
               // (private router:Router) -----> Dependency Injection 
                                               //private/public --> access specifier
@@ -39,23 +34,17 @@ export class LoginComponent implements OnInit {
   login(){
     var acno = this.acno
     var psw = this.psw
+
+  const result=this.ds.login(acno,psw)
+  // calling function from dataservice
+  if(result){
+    alert('Login Success')
+    this.router.navigateByUrl('dashboard')
+    // routing technique--> navigateByUrl method
+  }
+    
   
-    var userDetails = this.userDetails
-  
-    if (acno in userDetails) {
-      if (psw==userDetails[acno]['password']) {
-        alert('login success')
-        // redirection
-        this.router.navigateByUrl('dashboard')
-        // navigateByUrl method
-      }
-      else {
-        alert('incorrect password')
-      }
-    }
-    else {
-      alert('user not exist')
-    }
+    
   }
 
   

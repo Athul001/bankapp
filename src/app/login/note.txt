@@ -27,3 +27,16 @@ Routing in angular
 --------------------
         navigateByUrl             
                       is a method of class router 
+
+Dependency Injection
+------------------------------
+
+To share datas between two classes
+inside constructor
+
+acessspecifier(public/private) variable:ClassName
+
+
+Angular services
+-------------------------------
+to store datas ( redundant data)
