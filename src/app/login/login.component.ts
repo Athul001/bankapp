@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   acno: any
   psw: any
 
+  
+
   //      DATA BINDING (DATA SHARING)
 
   //( component to view )  1. string interpollation
@@ -23,7 +25,11 @@ export class LoginComponent implements OnInit {
 
   
 
-  constructor(private router:Router,private ds:DataService) { }
+  constructor(private router:Router,private ds:DataService) {
+
+    
+
+   }
 
               // (private router:Router) -----> Dependency Injection 
                                               //private/public --> access specifier
