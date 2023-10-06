@@ -6,13 +6,14 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   currentuser: any
+  currentacno: any
 
   // reduntant data
   userDetails: any = {
-    1000: { acno: 1000, username: "amal", password: 123, balance: 0 },
-    1001: { acno: 1001, username: "anu", password: 123, balance: 0 },
-    1002: { acno: 1002, username: "arun", password: 123, balance: 0 },
-    1003: { acno: 1003, username: "mega", password: 123, balance: 0 }
+    1000: { acno: 1000, username: "amal", password: 123, balance: 0,transaction:[]},
+    1001: { acno: 1001, username: "anu", password: 123, balance: 0, transaction:[]},
+    1002: { acno: 1002, username: "arun", password: 123, balance: 0,transaction:[]},
+    1003: { acno: 1003, username: "mega", password: 123, balance: 0,transaction:[]}
 
   }
 
@@ -26,7 +27,7 @@ export class DataService {
     }
     else {
 
-      userDetails[acno] = { acno, username, password, balance: 0 }
+      userDetails[acno] = { acno, username, password, balance: 0,transaction:[] }
       // console.log(userDetails);
 
       return true
@@ -37,6 +38,12 @@ export class DataService {
   login(acno: any, psw: any) {
 
     var userDetails = this.userDetails
+
+    // account number ---- to show in transation ts file
+    // this.currentacno=userDetails[acno]['acno']
+    // or
+    this.currentacno=acno
+    
 
     // to show the variable in the dashboard ---- the variable named currentuser is created in class
     // then the data is stord in that variable
@@ -66,6 +73,9 @@ export class DataService {
     if (acno in userDetails) {
       if (psw == userDetails[acno]['password']) {
         userDetails[acno]['balance'] += amount
+
+        // add deposit details in transcation array
+        userDetails[acno]['transaction'].push({type:'CREDIT',amount:amount})
         return userDetails[acno]['balance']
       }
       else {
@@ -90,6 +100,9 @@ export class DataService {
       if (psw == userDetails[acno]['password']) {
         if (amount <= userDetails[acno]['balance']) {
           userDetails[acno]['balance'] -= amount
+
+          // to add this.withdraw details in array --- transaction[]
+          userDetails[acno]['transaction'].push({type:'DEBIT',amount})
           return userDetails[acno]['balance']
         }
         else {
@@ -108,7 +121,9 @@ export class DataService {
       return false
     }
 
+  }
 
-
+  gettransaction(acno:any){
+    return this.userDetails[acno]['transaction']
   }
 }
