@@ -40,3 +40,30 @@ acessspecifier(public/private) variable:ClassName
 Angular services
 -------------------------------
 to store datas ( redundant data)
+
+
+
+Angular directives
+-----------------------
+
+1. structural directives  -  to handle structured datas in view of a component
+       - ngFor    can directly apply in html to access elements from array
+
+
+Form Validation in Angular
+-------------------------------
+
+1. Template Driven method  -   first html form then apply validation
+
+
+2. Model Driven method     -   a model create for form in ts then apply validation methods.
+                               ReactiveFormModule   - module used for model form creation
+
+                               FormBuilder    - class in reactive form for model form creation
+
+                                A model form contain 
+                                        -form group
+                                        -array
+                                        -controler
+
+

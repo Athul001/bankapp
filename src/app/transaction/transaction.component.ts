@@ -18,7 +18,7 @@ export class TransactionComponent {
 
     this.transaction=this.ds.gettransaction(this.acno)
 
-    console.log(this.transaction);
+    // console.log(this.transaction);
 
     // for (i of transaction)
     
