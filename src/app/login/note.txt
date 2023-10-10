@@ -46,8 +46,11 @@ to store datas ( redundant data)
 Angular directives
 -----------------------
 
-1. structural directives  -  to handle structured datas in view of a component
-       - ngFor    can directly apply in html to access elements from array
+1. structural directives  -   To acess array/object in html
+                              to handle structured datas in view of a component
+                              can directly apply in html to access elements from array
+                                     - *ngFor
+                                     - *ngIf
 
 
 Form Validation in Angular
@@ -67,3 +70,12 @@ Form Validation in Angular
                                         -controler
 
 
+can access the output of input atribute   ( to show the errors in the form feilds)
+
+      cmd-    this.registerForm.get('uname')?.errors && this.loginForm.get('uname')?.touched "
+
+          match with rule  -- empty
+          not match        -- content
+
+Local Storage in Angular
+--------------------------

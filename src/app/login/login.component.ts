@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,7 @@ import { DataService } from '../services/data.service';
 })
 export class LoginComponent implements OnInit {
 
-  acno: any
-  psw: any
 
-  
 
   //      DATA BINDING (DATA SHARING)
 
@@ -21,37 +19,50 @@ export class LoginComponent implements OnInit {
 
   // ( component to view ) 2. property binding
   data = 'Enter Acno'
-  
 
-  
 
-  constructor(private router:Router,private ds:DataService) {
 
-    
 
-   }
+  constructor(private router: Router, private ds: DataService, private fb: FormBuilder) {
 
-              // (private router:Router) -----> Dependency Injection 
-                                              //private/public --> access specifier
+  }
+  loginForm = this.fb.group({
+    acno: ['', [Validators.required, Validators.pattern('[0-9]+')]],
+    psw: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]]
+  })
+  // (private router:Router) -----> Dependency Injection 
+  //private/public --> access specifier
 
   ngOnInit(): void {
   }
 
-  login(){
-    var acno = this.acno
-    var psw = this.psw
+  login() {
+    var acno = this.loginForm.value.acno
+    var psw = this.loginForm.value.psw
 
-  const result=this.ds.login(acno,psw)
-  // calling function from dataservice
-  if(result){
-    alert('Login Success')
-    this.router.navigateByUrl('dashboard')
-    // routing technique--> navigateByUrl method
-  }
-    
-  
-    
+    if (this.loginForm.valid) {
+
+      const result = this.ds.login(acno, psw)
+      // calling function from dataservice
+
+      if (result) {
+        alert('Login Success')
+        this.router.navigateByUrl('dashboard')
+        // routing technique--> navigateByUrl method
+      }
+
+    }
+    else {
+      alert('invalid form')
+    }
+
+
+
+
+
+
+
   }
 
-  
+
 }
