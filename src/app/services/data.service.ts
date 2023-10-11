@@ -10,14 +10,40 @@ export class DataService {
 
   // reduntant data
   userDetails: any = {
-    1000: { acno: 1000, username: "amal", password: 123, balance: 0, transaction: [] },
-    1001: { acno: 1001, username: "anu", password: 123, balance: 0, transaction: [] },
-    1002: { acno: 1002, username: "arun", password: 123, balance: 0, transaction: [] },
-    1003: { acno: 1003, username: "mega", password: 123, balance: 0, transaction: [] }
+    1000: { acno: 1000, username: "Amal", password: 123, balance: 0, transaction: [] },
+    1001: { acno: 1001, username: "Anu", password: 123, balance: 0, transaction: [] },
+    1002: { acno: 1002, username: "Arun", password: 123, balance: 0, transaction: [] },
+    1003: { acno: 1003, username: "Mega", password: 123, balance: 0, transaction: [] }
 
   }
 
-  constructor() { }
+  constructor() {
+    this.getData()
+   }
+
+  saveData(){
+    if(this.userDetails){
+      localStorage.setItem('database',JSON.stringify(this.userDetails))
+    }
+    if(this.currentuser){
+      localStorage.setItem('currentUser',JSON.stringify(this.currentuser))
+    }
+    if(this.currentacno){
+      localStorage.setItem('currentAcno',JSON.stringify(this.currentacno))
+    }
+  }
+
+  getData(){
+    if(localStorage.getItem('database')){
+      this.userDetails=JSON.parse(localStorage.getItem('database') ||'')
+    }
+    if(localStorage.getItem('currentUser')){
+      this.currentuser=JSON.parse(localStorage.getItem('currentUser')||'')
+    }
+    if(localStorage.getItem('currentAcno')){
+      this.currentacno=JSON.parse(localStorage.getItem('currentAcno')||'')
+    }
+  }
 
   register(acno: any, username: any, password: any) {
 
@@ -28,6 +54,7 @@ export class DataService {
     else {
 
       userDetails[acno] = { acno, username, password, balance: 0, transaction: [] }
+      this.saveData()
       // console.log(userDetails);
 
       return true
@@ -38,6 +65,10 @@ export class DataService {
   login(acno: any, psw: any) {
 
     var userDetails = this.userDetails
+
+    this.currentuser = userDetails[acno]['username']
+    
+
     if (acno in userDetails) {
       if (psw == userDetails[acno]['password']) {
 
@@ -45,13 +76,14 @@ export class DataService {
         // this.currentacno=userDetails[acno]['acno']
         // or
         this.currentacno = acno
-
-
+        this.saveData()
+        return true
 
         // to show the variable in the dashboard ---- the variable named currentuser is created in class
         // then the data is stord in that variable
-        this.currentuser = userDetails[acno]['username']
-        return true
+        
+        
+        
 
       }
       else {
@@ -76,6 +108,8 @@ export class DataService {
 
         // add deposit details in transcation array
         userDetails[acno]['transaction'].push({ type: 'CREDIT', amount: amount })
+
+        this.saveData()
         return userDetails[acno]['balance']
       }
       else {
@@ -103,6 +137,9 @@ export class DataService {
 
           // to add this.withdraw details in array --- transaction[]
           userDetails[acno]['transaction'].push({ type: 'DEBIT', amount })
+          
+          this.saveData()
+
           return userDetails[acno]['balance']
         }
         else {

@@ -79,3 +79,7 @@ can access the output of input atribute   ( to show the errors in the form feild
 
 Local Storage in Angular
 --------------------------
+
+setItem
+getItem
+removeItem
