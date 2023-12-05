@@ -1,3 +1,7 @@
+
+                                        Angular
+
+
 Data Sharing
 -------
 
@@ -61,6 +65,8 @@ Form Validation in Angular
 
 2. Model Driven method     -   a model create for form in ts then apply validation methods.
                                ReactiveFormModule   - module used for model form creation
+                               for advanced validation
+                               import from Reactive Form Module(in app.module.ts)
 
                                FormBuilder    - class in reactive form for model form creation
 
@@ -80,6 +86,25 @@ can access the output of input atribute   ( to show the errors in the form feild
 Local Storage in Angular
 --------------------------
 
-setItem
-getItem
-removeItem
+setItem-to store data in local storage  
+getItem-to get data from local storage 
+removeItem-to remove data from local storage
+
+Parent Child communication
+----------------------------
+      parent--> child communication
+      child--> parent communication
+
+eg: 
+        dashboard-->parent -@input
+        delete -->child @0utput
+
+Angular Pipes
+--------------------------
+Use pipes to transform strings, currency amounts, dates, and other data for display. 
+Pipes are simple functions to use in template expressions to accept an input value and return a transformed value.
+Pipes are useful because you can use them throughout your application, 
+while only declaring each pipe once. For example, 
+you would use a pipe to show a date as April 15, 1988 rather than the raw string format.
+
+

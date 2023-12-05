@@ -33,6 +33,8 @@ export class RegisterComponent {
   }
 
   register() {
+    
+    
     var uname = this.registerForm.value.uname
     var acno = this.registerForm.value.acno
     var psw = this.registerForm.value.psw

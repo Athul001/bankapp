@@ -55,7 +55,7 @@ export class DataService {
 
       userDetails[acno] = { acno, username, password, balance: 0, transaction: [] }
       this.saveData()
-      // console.log(userDetails);
+      console.log(userDetails);
 
       return true
 
@@ -163,4 +163,5 @@ export class DataService {
   gettransaction(acno: any) {
     return this.userDetails[acno]['transaction']
   }
+  // details of transaction
 }

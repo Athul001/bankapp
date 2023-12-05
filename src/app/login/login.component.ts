@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   //      DATA BINDING (DATA SHARING)
 
   //( component to view )  1. string interpollation
-  aim = 'Federal Bank - Your Perfect Banking Partner'
+  aim = 'CAPITAL BANK - Your Perfect Banking Partner'
 
   // ( component to view ) 2. property binding
   data = 'Enter Acno'
